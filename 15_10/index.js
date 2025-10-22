@@ -2,6 +2,7 @@ let http = require('http');
 const url = require('url');
 const hostname = '127.0.0.1';
 const port = 3000;
+const fs = require('fs');
 const { readFile } = require('fs/promises');
 const mime = require('mime-types');
 const path = require('path');
@@ -69,4 +70,5 @@ http.createServer(async  (req, res)=> {
 }).listen(port, hostname, () => {
     console.log(`Server started at http://${hostname}:${port}`);
 });
+
 
