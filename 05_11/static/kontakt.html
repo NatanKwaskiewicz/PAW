@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+    <a href="index.html">Strona główna</a>
+    <a href="o-nas.html">O nas</a>
+    <a href="oferta.html">Oferta</a>
+    <a href="kontakt.html">Kontakt</a>
+</nav>
+<header>
+    <h1>Kontakt</h1>
+</header>
+
+<form action="/sent" method="post">
+    <div>
+        <label for="firstName">Imię:</label>
+        <input type="text" id="firstName" name="firstName" required>
+    </div>
+    <br>
+    <div>
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" required>
+    </div>
+    <br>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <br>
+    <div>
+        <label for="message">Treść wiadomości:</label>
+        <br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+    </div>
+    <br>
+    <div>
+        <button type="submit">Wyślij</button>
+    </div>
+</form>
+</body>
+<footer>
+    <p>Nataniel Kwaśkiewicz 4D</p>
+</footer>
+</html>
