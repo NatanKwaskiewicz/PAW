@@ -1,32 +1,27 @@
 {
   "categories": [
     {
-      "id": 1,
       "category": "Tech News"
     },
     {
-      "id": 2,
       "category": "Lifestyle"
     }
   ],
 
   "posts": [
     {
-      "id": 1,
       "title": "New AI Breakthrough",
       "content": "Researchers developed a new AI model capable of learning with fewer parameters.",
       "author": "John Doe",
       "categoryId": 1
     },
     {
-      "id": 2,
       "title": "Top Healthy Living Tips",
       "content": "Here are 10 simple routines that improve your daily lifestyle.",
       "author": "Alice Smith",
       "categoryId": 2
     },
     {
-      "id": 3,
       "title": "JavaScript Performance Boost",
       "content": "New V8 engine optimizations make JS significantly faster.",
       "author": "Mike Ross",
@@ -36,25 +31,21 @@
 
   "comments": [
     {
-      "id": 1,
       "content": "Great read! Very insightful.",
       "author": "Sarah Parker",
       "postId": 1
     },
     {
-      "id": 2,
       "content": "This AI stuff is getting crazy.",
       "author": "TechFan99",
       "postId": 1
     },
     {
-      "id": 3,
       "content": "These tips really helped my routine!",
       "author": "WellnessGuru",
       "postId": 2
     },
     {
-      "id": 4,
       "content": "JS keeps improving every year!",
       "author": "DevMaster",
       "postId": 3
