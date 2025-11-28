@@ -1,0 +1,81 @@
+import prisma from '../prisma.js';
+
+export const getComments = async (req, res) => {
+    try {
+        const comments = await prisma.comment.findMany();
+        res.status(200).json(comments);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+export const getOneComment = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const comment = await prisma.comment.findUnique({
+            where: {id: Number(id)},
+        })
+
+        if (comment==null) {
+            res.status(404).json('Comment not found');
+        }
+        else {
+            res.status(200).json(comment);
+        }
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+export const createComment = async (req, res) => {
+    try {
+        const commentContent = req.body;
+        const comment = await prisma.comment.create({
+            data: commentContent
+        })
+        res.status(201).json(comment);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+export const updateCommentPut = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const commentContent = req.body;
+        const comment = await prisma.comment.update({
+            where: {id: Number(id)},
+            data: commentContent
+        })
+        res.status(200).json(comment);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+export const updateCommentPatch = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const commentContent = req.body;
+        const comment = await prisma.comment.update({
+            where: {id: Number(id)},
+            data: commentContent
+        })
+        res.status(200).json(comment);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+export const deleteComment = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const comment = await prisma.comment.delete({
+            where: {id: Number(id)},
+        })
+        res.status(200).json(comment);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
