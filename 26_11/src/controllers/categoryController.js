@@ -1,4 +1,4 @@
-import prisma from '../prisma.js';
+import {prisma} from '../prisma.js';
 
 export const getCategories = async (req, res, next) => {
     try {
@@ -30,18 +30,12 @@ export const getOneCategory = async (req, res, next) => {
 
 export const createCategory = async (req, res, next) => {
     try {
-        const { categoryContent } = req.body;
+        const { category } = req.body;
 
-        if (!categoryContent) {
-            return res.status(400).json({
-                error: 'Missing required fields'
-            })
-        }
-
-        const category = await prisma.category.create({
-            data: categoryContent
+        const _category = await prisma.category.create({
+            data: { category }
         })
-        res.status(201).json(category);
+        res.status(201).json(_category);
     } catch (error) {
         next(error);
     }

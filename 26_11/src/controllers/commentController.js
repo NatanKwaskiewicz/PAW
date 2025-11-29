@@ -1,4 +1,4 @@
-import prisma from '../prisma.js';
+import {prisma} from '../prisma.js';
 
 export const getComments = async (req, res, next) => {
     try {
@@ -31,11 +31,6 @@ export const createComment = async (req, res, next) => {
     try {
         const { content, author, postId } = req.body;
 
-        if (!content || !author || !postId) {
-            return res.status(400).json({
-                error: 'Missing required fields'
-            })
-        }
         const comment = await prisma.comment.create({
             data: { content, author, postId }
         })

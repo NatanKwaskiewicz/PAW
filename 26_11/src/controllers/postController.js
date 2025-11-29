@@ -1,4 +1,4 @@
-import prisma from '../prisma.js';
+import {prisma} from '../prisma.js';
 
 export const getPosts = async (req, res, next) => {
     try {
@@ -31,12 +31,6 @@ export const getOnePost = async (req, res, next) => {
 export const createPost = async (req, res, next) => {
     try {
         const { title, content, author, categoryId } = req.body;
-
-        if (!title || !content || !author || !categoryId) {
-            return res.status(400).json({
-                error: 'Missing required fields'
-            })
-        }
 
         const post = await prisma.post.create({
             data: {title, content, author, categoryId}
