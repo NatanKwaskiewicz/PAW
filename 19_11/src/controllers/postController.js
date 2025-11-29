@@ -1,15 +1,15 @@
 import prisma from '../prisma.js';
 
-export const getPosts = async (req, res) => {
+export const getPosts = async (req, res, next) => {
     try {
         const posts = await prisma.post.findMany();
         res.status(200).json(posts);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const getOnePost = async (req, res) => {
+export const getOnePost = async (req, res, next) => {
     try {
         const id = req.params.id;
         const post = await prisma.post.findUnique({
@@ -24,23 +24,30 @@ export const getOnePost = async (req, res) => {
         }
 
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const createPost = async (req, res) => {
+export const createPost = async (req, res, next) => {
     try {
-        const postContent = req.body;
+        const { title, content, author, categoryId } = req.body;
+
+        if (!title || !content || !author || !categoryId) {
+            return res.status(400).json({
+                error: 'Missing required fields'
+            })
+        }
+
         const post = await prisma.post.create({
-            data: postContent
+            data: {title, content, author, categoryId}
         })
         res.status(201).json(post);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const updatePostPut = async (req, res) => {
+export const updatePostPut = async (req, res, next) => {
     try {
         const id = req.params.id;
         const postsContent = req.body;
@@ -51,11 +58,11 @@ export const updatePostPut = async (req, res) => {
         })
         res.status(200).json(post);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const updatePostPatch = async (req, res) => {
+export const updatePostPatch = async (req, res, next) => {
     try {
         const id = req.params.id;
         const postContent = req.body;
@@ -66,11 +73,11 @@ export const updatePostPatch = async (req, res) => {
         })
         res.status(200).json(post);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const deletePost = async (req, res) => {
+export const deletePost = async (req, res, next) => {
     try {
         const id = req.params.id;
 
@@ -84,6 +91,6 @@ export const deletePost = async (req, res) => {
         })
         res.status(200).json(post);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }

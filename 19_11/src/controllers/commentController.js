@@ -1,15 +1,15 @@
 import prisma from '../prisma.js';
 
-export const getComments = async (req, res) => {
+export const getComments = async (req, res, next) => {
     try {
         const comments = await prisma.comment.findMany();
         res.status(200).json(comments);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const getOneComment = async (req, res) => {
+export const getOneComment = async (req, res, next) => {
     try {
         const id = req.params.id;
         const comment = await prisma.comment.findUnique({
@@ -22,25 +22,30 @@ export const getOneComment = async (req, res) => {
         else {
             res.status(200).json(comment);
         }
-
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const createComment = async (req, res) => {
+export const createComment = async (req, res, next) => {
     try {
-        const commentContent = req.body;
+        const { content, author, postId } = req.body;
+
+        if (!content || !author || !postId) {
+            return res.status(400).json({
+                error: 'Missing required fields'
+            })
+        }
         const comment = await prisma.comment.create({
-            data: commentContent
+            data: { content, author, postId }
         })
         res.status(201).json(comment);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const updateCommentPut = async (req, res) => {
+export const updateCommentPut = async (req, res, next) => {
     try {
         const id = req.params.id;
         const commentContent = req.body;
@@ -50,11 +55,11 @@ export const updateCommentPut = async (req, res) => {
         })
         res.status(200).json(comment);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const updateCommentPatch = async (req, res) => {
+export const updateCommentPatch = async (req, res, next) => {
     try {
         const id = req.params.id;
         const commentContent = req.body;
@@ -64,11 +69,11 @@ export const updateCommentPatch = async (req, res) => {
         })
         res.status(200).json(comment);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const deleteComment = async (req, res) => {
+export const deleteComment = async (req, res, next) => {
     try {
         const id = req.params.id;
         const comment = await prisma.comment.delete({
@@ -76,6 +81,6 @@ export const deleteComment = async (req, res) => {
         })
         res.status(200).json(comment);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }

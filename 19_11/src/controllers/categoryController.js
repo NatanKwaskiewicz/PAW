@@ -1,15 +1,15 @@
 import prisma from '../prisma.js';
 
-export const getCategories = async (req, res) => {
+export const getCategories = async (req, res, next) => {
     try {
         const category = await prisma.category.findMany();
         res.status(200).json(category);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const getOneCategory = async (req, res) => {
+export const getOneCategory = async (req, res, next) => {
     try {
         const id = req.params.id;
         const category = await prisma.category.findUnique({
@@ -24,23 +24,30 @@ export const getOneCategory = async (req, res) => {
         }
 
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const createCategory = async (req, res) => {
+export const createCategory = async (req, res, next) => {
     try {
-        const categoryContent = req.body;
+        const { categoryContent } = req.body;
+
+        if (!categoryContent) {
+            return res.status(400).json({
+                error: 'Missing required fields'
+            })
+        }
+
         const category = await prisma.category.create({
             data: categoryContent
         })
         res.status(201).json(category);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const updateCategoryPut = async (req, res) => {
+export const updateCategoryPut = async (req, res, next) => {
     try {
         const id = req.params.id;
         const categoryContent = req.body;
@@ -50,11 +57,11 @@ export const updateCategoryPut = async (req, res) => {
         })
         res.status(200).json(category);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const updateCategoryPatch = async (req, res) => {
+export const updateCategoryPatch = async (req, res, next) => {
     try {
         const id = req.params.id;
         const categoryContent = req.body;
@@ -64,11 +71,11 @@ export const updateCategoryPatch = async (req, res) => {
         })
         res.status(200).json(category);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
 
-export const deleteCategory = async (req, res) => {
+export const deleteCategory = async (req, res, next) => {
     try {
         const id = req.params.id;
 
@@ -88,6 +95,6 @@ export const deleteCategory = async (req, res) => {
         })
         res.status(200).json(category);
     } catch (error) {
-        res.status(500).json(error);
+        next(error);
     }
 }
