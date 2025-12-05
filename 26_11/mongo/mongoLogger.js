@@ -32,8 +32,6 @@ export const errorLogger = async (err, req, res, next) => {
         }
 
         await collection.insertOne(logError)
-        console.log('wywolane')
-
     } catch (error) {
         console.error(error)
     }
