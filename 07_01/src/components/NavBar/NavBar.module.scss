@@ -5,6 +5,27 @@
   height: 6rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 20px;
+  padding: 3rem;
+
+  a {
+    color: #F2F2F2;
+    transition: color 0.3s ease, translate 0.3s ease;
+
+    &:hover {
+      color: #BFB2A3;
+      translate: 0px -4px;
+    }
+  }
+
+  section {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  h1 {
+    margin-left: 4rem;
+  }
 }
