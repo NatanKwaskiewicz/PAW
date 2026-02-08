@@ -3,13 +3,16 @@ import {useState, useEffect} from "react";
 import {useParams} from "react-router";
 import type {Post} from '../../types/Post/Post.ts'
 import type {User} from '../../types/User/User.ts'
+import CommentList from "../CommentList";
+import Loading from "../Loading";
+import Error from "../Error";
 
 const Post = () => {
     const [post, setPost] = useState<Post>()
+    const [user, setUser] = useState<User>()
     const [isPostLoading, setIsPostLoading] = useState(false)
     const [isUserLoading, setIsUserLoading] = useState(false)
     const [isError, setIsError] = useState(false)
-    const [user, setUser] = useState<User>()
     const { id }  = useParams()
 
     useEffect(() => {
@@ -29,7 +32,6 @@ const Post = () => {
             })
     }, [])
 
-    console.log(post)
     useEffect(() => {
         if (!post?.userId) return;
 
@@ -49,30 +51,29 @@ const Post = () => {
             })
     }, [post?.userId])
 
-
     return (
         <div className={styles.Post}>
             {isPostLoading || isUserLoading && (
-                <div className={styles.PostListLoading}>
-                    Loading...
-                </div>
+                <Loading />
             )}
             {isError && (
-                <div className={styles.PostListError}>
-                    An error occurred while fetching posts.
-                </div>
+                <Error
+                    message={"An error occurred while fetching post"}
+                />
             )}
             {!isPostLoading && !isUserLoading && !isError && (
                 <>
-                <h3 className={styles.PostTitle}>
+                <h1 className={styles.PostTitle}>
                     {post?.title}
-                </h3>
+                </h1>
                 <p className={styles.PostBody}>
                     {post?.body}
                 </p>
                     <h5 className={styles.PostUser}>
                         User: {user?.username}
                     </h5>
+                    <hr/>
+                    <CommentList />
                 </>
             )}
         </div>

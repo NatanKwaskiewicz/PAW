@@ -1,5 +1,7 @@
 import styles from './PostList.module.scss'
 import type {Post} from '../../types/Post/Post.ts'
+import Loading from '../Loading'
+import Error from "../Error";
 
 import {Link} from 'react-router'
 import {useEffect, useState} from "react";
@@ -29,17 +31,18 @@ const PostList = () => {
     return (
         <div className={styles.PostList}>
             {isLoading && (
-                <div className={styles.PostListLoading}>
-                    Loading...
-                </div>
+                <Loading />
             )}
             {isError && (
-                <div className={styles.PostListError}>
-                    An error occurred while fetching posts.
-                </div>
+                <Error
+                    message={"An error occurred while fetching posts."}
+                />
             )}
             {!isLoading && !isError && (
             <>
+                <h1 className={styles.PostListHeading}>
+                    Available posts
+                </h1>
                 {posts.length === 0 && (
                     <div className={styles.PostListError}>
                         No posts found.
