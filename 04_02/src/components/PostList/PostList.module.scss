@@ -1,3 +1,5 @@
+@import "../../colors.scss";
+
 .PostList {
   width: 80%;
   max-width: 160rem;
@@ -8,24 +10,23 @@
   font-size: 2rem;
   gap:4rem;
 
-  &Loading, &Error {
+  &Heading {
     grid-column-start: 1;
     grid-column-end: 4;
-    font-size: 3rem;
     text-align: center;
-    margin-inline: auto;
+    padding-block: 1rem;
   }
 
   &Post {
-    border: 2px solid #0D0D0D;
+    border: 2px solid $black;
     border-radius: 10px;
     padding: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     &Title {
       font-size: 3rem;
-
     }
 
     &Body {
@@ -33,19 +34,19 @@
     }
 
     &Link {
-      color:#F2F2F2;
+      color:$dirtywhite;
       transition: color 0.3s ease, translate 0.3s ease;
-      background-color: #0D0D0D;
+      background-color: $black;
       width: -webkit-fill-available;
       border-radius: 10px;
       padding: 1rem;
       text-align: center;
+
       &:hover {
-        color: #BFB2A3;
+        color: $darkwhite;
         translate: 0px -5px;
       }
     }
   }
-
 }
 
