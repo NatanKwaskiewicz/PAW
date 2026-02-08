@@ -30,7 +30,7 @@ const Post = () => {
             .finally(() => {
                 setIsPostLoading(false)
             })
-    }, [])
+    }, [id])
 
     useEffect(() => {
         if (!post?.userId) return;

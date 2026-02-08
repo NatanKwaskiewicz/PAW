@@ -26,7 +26,7 @@ const CommentList = () => {
             .finally(() => {
                 setIsLoading(false)
             })
-    }, [])
+    }, [id])
 
     return (
         <div className={styles.CommentList}>
