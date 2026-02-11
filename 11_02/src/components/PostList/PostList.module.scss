@@ -1,0 +1,52 @@
+@import "../../colors.scss";
+
+.PostList {
+  width: 80%;
+  max-width: 160rem;
+  display: grid;
+  margin-inline: auto;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2rem 4rem 2rem 4rem;
+  font-size: 2rem;
+  gap:4rem;
+
+  &Heading {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+    padding-block: 1rem;
+  }
+
+  &Post {
+    border: 2px solid $black;
+    border-radius: 10px;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &Title {
+      font-size: 3rem;
+    }
+
+    &Body {
+      margin-block: 1.6rem;
+    }
+
+    &Link {
+      color:$dirtywhite;
+      transition: color 0.3s ease, translate 0.3s ease;
+      background-color: $black;
+      width: -webkit-fill-available;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+
+      &:hover {
+        color: $darkwhite;
+        translate: 0px -5px;
+      }
+    }
+  }
+}
+

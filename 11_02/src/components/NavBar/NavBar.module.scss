@@ -1,0 +1,33 @@
+@import "../../colors.scss";
+
+.NavBar {
+  background-color: $black;
+  color: $dirtywhite;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  padding: 3rem;
+
+  a {
+    color: $dirtywhite;
+    transition: color 0.3s ease, translate 0.3s ease;
+
+    &:hover {
+      color: $darkwhite;
+      translate: 0px -4px;
+    }
+  }
+
+  section {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  h1 {
+    margin-left: 4rem;
+  }
+}

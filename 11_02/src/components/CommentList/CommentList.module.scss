@@ -1,0 +1,18 @@
+@import "../../colors.scss";
+
+.CommentList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+
+  &Comment {
+    border: 2px solid $black;
+    border-radius: 10px;
+    padding: 1rem;
+
+    &Body {
+      font-size: 1.8rem;
+    }
+  }
+}
