@@ -1,4 +1,4 @@
-@import "../../colors.scss";
+@use "../../colors.scss" as colors;
 
 .PostList {
   width: 80%;
@@ -18,7 +18,7 @@
   }
 
   &Post {
-    border: 2px solid $black;
+    border: 2px solid colors.$black;
     border-radius: 10px;
     padding: 0.8rem;
     display: flex;
@@ -34,16 +34,16 @@
     }
 
     &Link {
-      color:$dirtywhite;
+      color: colors.$dirtywhite;
       transition: color 0.3s ease, translate 0.3s ease;
-      background-color: $black;
+      background-color: colors.$black;
       width: -webkit-fill-available;
       border-radius: 10px;
       padding: 1rem;
       text-align: center;
 
       &:hover {
-        color: $darkwhite;
+        color: colors.$darkwhite;
         translate: 0px -5px;
       }
     }
