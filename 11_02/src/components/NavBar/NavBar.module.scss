@@ -23,10 +23,13 @@
         }
     }
 
-    section {
+    ul {
         width: 30%;
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-end;
+        gap: 5vw;
+        list-style: none;
+        padding: 1rem;
     }
 
     h1 {

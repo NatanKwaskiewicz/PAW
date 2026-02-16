@@ -3,14 +3,20 @@ import styles from './NavBar.module.scss'
 
 const NavBar = () => {
     return (
-        <div className={styles.NavBar}>
+        <nav className={styles.NavBar}>
             <h1>Blog</h1>
-            <section>
-                <Link to="/">Home</Link>
-                <Link to="/posts">Posts</Link>
-                <Link to="/categories">Categories</Link>
-            </section>
-        </div>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/posts">Posts</Link>
+                </li>
+                <li>
+                    <Link to="/categories">Categories</Link>
+                </li>
+            </ul>
+        </nav>
     )
 }
 
