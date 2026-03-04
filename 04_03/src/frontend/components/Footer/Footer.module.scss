@@ -1,0 +1,13 @@
+@use '../../colors.scss' as colors;
+
+.Footer {
+    width: 100%;
+    background-color: colors.$black;
+    color: colors.$dirtywhite;
+    height: 6rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
