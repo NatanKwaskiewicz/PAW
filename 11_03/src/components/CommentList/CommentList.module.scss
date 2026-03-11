@@ -1,0 +1,29 @@
+@use '../../colors.scss' as colors;
+
+.CommentList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 55vh;
+    gap: 2rem;
+
+    &Comment {
+        border: 2px solid colors.$black;
+        border-radius: 10px;
+        padding: 1rem;
+        animation: slide-in-upward 0.5s ease forwards;
+
+        @keyframes slide-in-upward {
+            from {
+                transform: translateY(60rem);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        &Body {
+            font-size: 1.8rem;
+        }
+    }
+}

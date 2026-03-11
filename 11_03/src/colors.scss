@@ -1,0 +1,5 @@
+@use 'sass:color';
+
+$black: #0d0d0d;
+$dirtywhite: #f2f2f2;
+$darkwhite: color.adjust($dirtywhite, $lightness: -30%);

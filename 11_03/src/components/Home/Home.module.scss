@@ -1,0 +1,119 @@
+@use '../../colors.scss' as colors;
+
+@mixin imgKeyframes($name, $angle1, $angle2, $scale1, $scale2) {
+    @keyframes #{$name} {
+        from {
+            transform: rotate($angle1) scale($scale1);
+        }
+        to {
+            transform: rotate($angle2) scale($scale2);
+        }
+    }
+}
+
+@include imgKeyframes(animateImg1, 0deg, -12deg, 0.85, 0.95);
+@include imgKeyframes(animateImg2, 0deg, 8deg, 0.9, 1);
+@include imgKeyframes(animateImg3, 0deg, 6deg, 0.8, 0.9);
+@include imgKeyframes(animateImg4, 0deg, -6deg, 0.95, 1.05);
+@include imgKeyframes(animateImg5, 0deg, -3deg, 0.82, 0.92);
+@include imgKeyframes(animateImg6, 0deg, 12deg, 0.88, 0.98);
+
+.Home {
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    padding: 4rem 8rem 4rem 8rem;
+    font-size: 2rem;
+    line-height: 4rem;
+
+    &Left {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        animation: slide-in-left 0.5s ease-in-out forwards;
+
+        @keyframes slide-in-left {
+            from {
+                transform: translateX(-100rem);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &Right {
+        width: 50%;
+        position: relative;
+        padding: 2rem;
+        min-height: 40vh;
+
+        &Img {
+            position: absolute;
+            width: 22vw;
+            max-width: 31rem;
+            min-width: 15rem;
+            height: auto;
+            border-radius: 2rem;
+            opacity: 0.88;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4);
+            transition:
+                transform 0.6s ease,
+                opacity 0.3s ease;
+
+            &:hover {
+                transform: scale(1.08);
+                opacity: 1;
+                z-index: 10;
+            }
+
+            &:nth-of-type(1) {
+                top: -15%;
+                left: 14%;
+                animation: animateImg1 0.5s ease-in-out forwards;
+                z-index: 2;
+            }
+
+            &:nth-of-type(2) {
+                top: -12%;
+                left: 46%;
+                animation: animateImg2 0.5s ease-in-out forwards;
+                z-index: 3;
+            }
+
+            &:nth-of-type(3) {
+                top: 20%;
+                left: 9%;
+                animation: animateImg3 0.5s ease-in-out forwards;
+                z-index: 1;
+            }
+
+            &:nth-of-type(4) {
+                top: 25%;
+                left: 50%;
+                animation: animateImg4 0.5s ease-in-out forwards;
+                z-index: 4;
+            }
+
+            &:nth-of-type(5) {
+                top: 55%;
+                left: 22%;
+                animation: animateImg5 0.5s ease-in-out forwards;
+                z-index: 2;
+            }
+
+            &:nth-of-type(6) {
+                top: 61%;
+                left: 56%;
+                animation: animateImg6 0.5s ease-in-out forwards;
+                z-index: 3;
+            }
+        }
+    }
+
+    h1 {
+        padding-bottom: 2rem;
+    }
+}

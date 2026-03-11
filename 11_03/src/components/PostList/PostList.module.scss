@@ -1,0 +1,73 @@
+@use '../../colors.scss' as colors;
+
+.PostList {
+    width: 80%;
+    max-width: 160rem;
+    display: grid;
+    margin-inline: auto;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem 4rem 2rem 4rem;
+    font-size: 2rem;
+    gap: 4rem;
+
+    &Heading {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        text-align: center;
+        padding-block: 1rem;
+        animation: slide-in-right 0.5s ease-in-out forwards;
+
+        @keyframes slide-in-right {
+            from {
+                transform: translateX(60rem);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    &Post {
+        border: 2px solid colors.$black;
+        border-radius: 10px;
+        padding: 0.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        animation: slide-in-upward 0.5s ease-in-out forwards;
+
+        @keyframes slide-in-upward {
+            from {
+                transform: translateY(60rem);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        &Title {
+            font-size: 3rem;
+        }
+
+        &Body {
+            margin-block: 1.6rem;
+        }
+
+        &Link {
+            color: colors.$dirtywhite;
+            transition:
+                color 0.3s ease,
+                translate 0.3s ease;
+            background-color: colors.$black;
+            width: -webkit-fill-available;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+
+            &:hover {
+                color: colors.$darkwhite;
+                translate: 0px -5px;
+            }
+        }
+    }
+}
