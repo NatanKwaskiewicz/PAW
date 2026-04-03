@@ -17,7 +17,7 @@ const PostList = () => {
                 <>
                     <h1 className={styles.PostListHeading}>Available posts</h1>
                     {posts.length === 0 && (
-                        <div className={styles.PostListError}>
+                        <div className={styles.PostListHeading}>
                             No posts found.
                         </div>
                     )}
@@ -27,7 +27,7 @@ const PostList = () => {
                                 {post.title}
                             </h4>
                             <p className={styles.PostListPostBody}>
-                                {post.body.substring(0, 30)}...
+                                {post.content?.substring(0, 30)}...
                             </p>
                             <Link
                                 to={`/posts/${post.id}`}

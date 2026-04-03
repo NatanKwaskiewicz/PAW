@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 import type { Post } from '../types/Post/Post.ts'
 
-export const getPosts = async () => {
-    return await fetch('https://jsonplaceholder.typicode.com/posts').then(
-        (res) => res.json()
-    )
+const API_URL: string | undefined = import.meta.env.VITE_API_URL
+
+export const getPosts = async (): Promise<Post[]> => {
+    const res: Response = await fetch(`${API_URL}/posts`)
+    if (!res.ok) throw new Error('Error fetching posts')
+    return res.json()
 }
 
 export const usePosts = () => {

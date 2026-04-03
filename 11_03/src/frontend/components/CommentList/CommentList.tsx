@@ -27,14 +27,11 @@ const CommentList = () => {
                             className={styles.CommentListComment}
                             key={comment.id}
                         >
-                            <h4 className={styles.CommentListCommentName}>
-                                Title: {comment.name}
+                            <h4 className={styles.CommentListCommentEmail}>
+                                User: {comment.author}
                             </h4>
-                            <h6 className={styles.CommentListCommentEmail}>
-                                User: {comment.email}
-                            </h6>
                             <p className={styles.CommentListCommentBody}>
-                                {comment.body}
+                                {comment.content}
                             </p>
                         </div>
                     ))}

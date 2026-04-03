@@ -3,12 +3,12 @@ import { useParams } from 'react-router'
 import CommentList from '../CommentList'
 import Loading from '../Loading'
 import Error from '../Error'
-import Username from '../Username'
 import { usePost } from '../../hooks/usePost.ts'
+import CommentForm from '../CommentForm'
 
 const Post = () => {
     const { id } = useParams<{ id: string }>()
-    const { data: post, isLoading, isError } = usePost(id)
+    const { data: post, isLoading, isError } = usePost(id!)
 
     return (
         <div className={styles.Post}>
@@ -19,10 +19,14 @@ const Post = () => {
             {!isLoading && !isError && post && (
                 <>
                     <h1 className={styles.PostTitle}>{post?.title}</h1>
-                    <p className={styles.PostBody}>{post?.body}</p>
-                    <Username />
+                    <p className={styles.PostBody}>{post?.content}</p>
+                    <h5 className={styles.PostAuthor}>{post?.author}</h5>
                     <hr />
-                    <CommentList />
+                    <div className={styles.PostCommentContainer}>
+                        <CommentList />
+                        <div className={styles.PostCommentContainerLine}></div>
+                        <CommentForm />
+                    </div>
                 </>
             )}
         </div>
