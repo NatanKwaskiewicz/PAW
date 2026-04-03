@@ -32,4 +32,21 @@
         margin-block: 1rem;
         border: 1px solid colors.$black;
     }
+
+    &Author {
+        padding-block: 0.5rem;
+        min-height: 4vh;
+    }
+
+    &CommentContainer {
+        display: flex;
+        width: 100%;
+        min-height: 55vh;
+        justify-content: space-between;
+        padding-top: 1.6rem;
+
+        &Line {
+            border: 1px solid colors.$black;
+        }
+    }
 }
