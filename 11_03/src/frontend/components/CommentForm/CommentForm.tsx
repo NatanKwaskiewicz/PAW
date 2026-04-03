@@ -10,13 +10,13 @@ const CommentForm = () => {
     const { mutate: submitComment, isPending } = useCreateComment(Number(id))
     const postId: number = Number(id)
 
-    const handleSubmission = () => {
+    const handleSubmission = (e: React.FormEvent) => {
+        e.preventDefault()
         submitComment(
             { author, content, postId },
             {
                 onSuccess: () => {
-                    setAuthor('')
-                    setContent('')
+                    window.location.reload()
                 },
             }
         )
@@ -31,7 +31,6 @@ const CommentForm = () => {
             <input
                 className={styles.CommentFormInput}
                 id="author"
-                name="author"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
                 required
